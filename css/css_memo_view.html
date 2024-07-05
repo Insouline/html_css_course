@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Отображение стилей в HTML</title>
+	<!--Один из способов подключения CSS файлов - связывание. Делается это с помощью тега link в теге head. Для
+	подключения файла стилей необходимо в атрибуте rel указать значение stylesheet, а затем в атрибуте href указать путь
+	к файлу формата .css (он может быть как в виде пути в вашем компьютере, так и в виде ссылки на интернет-ресурс.
+	Атрибут type="text/css" необязателен, это просто уточнение, что подключаемый файл будет иметь css-формат.-->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="https://example.com/style.css">
+	
+	<!--Ещё один способ подключения стилей к документу - внедрение. Делается он с помощью тега style, который прописывается
+	внутри head. Внутри этого тега предусмотрен синтаксис css, поэтому если вы попытаетесь написать код html внутри него,
+	то столкнётесь с ошибками. Здесь вы пишете всё то же, что и в css-файле, просто без самого файла. Ну и основной минус
+	данного подхода - стили работают в пределах одного документа, в отличие от того же связывания файлов, где один файл
+	стилей можно связать с кучей html-документов.-->
+	<style>
+		h2 {
+			color: blue;
+		}
+	</style>
+</head>
+
+<!--Ещё один способ подключения стилей - встраивание. Делается это с помощью атрибута style, где уже соответственно
+указывается весь CSS-код. Применяется он только к конкретному элементу, то есть для того, чтобы стилизовать другой элемент,
+необходимо снова прописать атрибут style и код CSS. Да, он ещё более ограничен, чем style в теге head.-->
+<body style="font-size: 20px; font-family: Arial, sans-serif">
+	<h2>Ниже будут элементы, к которым применены стили. Как раз будет пояснение как всё работает. </h2>
+	
+	<hr>
+	
+	<p>
+		Ко всем элементам типа "абзац" (p) был применён стиль - красный цвет текста.
+	</p>
+	
+	<hr>
+	
+	<!--Для каждого элемента есть атрибут class, в котором мы указываем название класса, к которому принадлежит элемент
+	(подробнее в css-файликах)-->
+	<p class="green_background">
+		А это абзац, принадлежащий классу "green_background" - цвет фона зелёный.
+	</p>
+	<pre class="green_background">
+		<b>А это элемент pre того же класса "green_background" - цвет фона зелёный.</b>
+		
+		rwhitespace = new RegExp( whitespace + "+", "g" ),
+
+		rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
+		rleadingCombinator = new RegExp( "^" + whitespace + "*([>+~]|" + whitespace + ")" +
+			whitespace + "*" ),
+		rdescend = new RegExp( whitespace + "|>" ),
+	
+		rpseudo = new RegExp( pseudos ),
+		ridentifier = new RegExp( "^" + identifier + "$" ),
+	
+		matchExpr = {
+			ID: new RegExp( "^#(" + identifier + ")" ),
+			CLASS: new RegExp( "^\\.(" + identifier + ")" ),
+			TAG: new RegExp( "^(" + identifier + "|[*])" ),
+			ATTR: new RegExp( "^" + attributes ),
+			PSEUDO: new RegExp( "^" + pseudos ),
+			CHILD: new RegExp(
+				"^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\(" +
+					whitespace + "*(even|odd|(([+-]|)(\\d*)n|)" + whitespace + "*(?:([+-]|)" +
+					whitespace + "*(\\d+)|))" + whitespace + "*\\)|)", "i" ),
+			bool: new RegExp( "^(?:" + booleans + ")$", "i" ),
+			
+			needsContext: new RegExp( "^" + whitespace +
+				"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" + whitespace +
+				"*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i" )
+		},
+	</pre>
+	<input class="green_background" type="text" placeholder="А это поле ввода того же класса green_background - цвет фона зелёный." size="100"><br><br>
+	
+	<hr>
+	
+	<!--Для каждого элемента есть атрибут id, в котором мы указываем идентификатор элемента (подробнее в css-файликах)-->
+	<input id="bold_border" type="text" placeholder="А это поле ввода имеет идентификатор bold_border - жирная рамка." size="100">
+	
+	<hr>
+	
+	<div class="context_div">
+		<p>
+			Тут пример реализации контекстного селектора<br>
+			Lorem ipsum dolor sit amet, <span>consectetur adipisicing elit. Accusamus blanditiis error fugit in iure, minus
+			necessitatibus nihil nostrum odio officia, officiis</span> placeat quaerat quis, quos rem repudiandae sit sunt unde.
+		</p>
+	</div>
+	
+	<hr>
+	
+	<div class="neighbor_div">
+		<p>
+			Тут пример реализации соседнего селектора + <br>
+			Lorem ipsum dolor sit amet, <i>consectetur adipisicing elit.</i> Accusamus blanditiis error fugit in iure, minus
+			necessitatibus nihil nostrum odio <b>officia, officiis placeat quaerat</b> quis, quos rem repudiandae sit sunt unde.
+		</p>
+	</div>
+	
+	<hr>
+	
+	<div class="neighbor_div_v2">
+		<p>
+			Тут пример реализации соседнего селектора ~ <br>
+			Lorem ipsum dolor sit amet, <i>consectetur adipisicing elit.</i> Accusamus blanditiis error fugit in iure, minus
+			necessitatibus nihil nostrum odio <b>officia, officiis placeat quaerat</b> quis, quos rem repudiandae sit sunt unde.
+		</p>
+	</div>
+	
+	<hr>
+	
+	<div class="daughter_div">
+		<p>
+			Тут пример реализации дочернего селектора<br>
+			Lorem ipsum dolor sit amet, <span>consectetur adipisicing elit. Accusamus blanditiis error fugit in iure, minus
+			necessitatibus nihil nostrum odio officia, officiis</span> placeat quaerat quis, quos rem repudiandae sit sunt unde.
+		</p>
+	</div>
+
+</body>
+</html>
+
